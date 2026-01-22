@@ -1,19 +1,25 @@
 package com.epam.campus;
 
-import static org.junit.jupiter.api.Assertions.assertTrue;
-
 import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
 
-/**
- * Unit test for simple App.
- */
 public class AppTest {
 
-    /**
-     * Rigorous Test :-)
-     */
     @Test
-    public void shouldAnswerWithTrue() {
-        assertTrue(true);
+    public void testBookManager() {
+        BookManager bm = new BookManager();
+        bm.addBook("Test Book");
+        assertTrue(bm.hasBook("Test Book"));
+        bm.removeBook("Test Book");
+        assertFalse(bm.hasBook("Test Book"));
+    }
+
+    @Test
+    public void testUserManager() {
+        UserManager um = new UserManager();
+        um.addUser("Test User");
+        assertTrue(um.listUsers().contains("Test User"));
+        um.removeUser("Test User");
+        assertFalse(um.listUsers().contains("Test User"));
     }
 }

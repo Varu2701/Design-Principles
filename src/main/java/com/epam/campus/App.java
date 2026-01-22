@@ -1,10 +1,17 @@
 package com.epam.campus;
 
-/**
- * Hello world!
- */
 public class App {
     public static void main(String[] args) {
-        System.out.println("Hello World!");
+        BookManager bookManager = new BookManager();
+        UserManager userManager = new UserManager();
+
+        bookManager.addBook("Clean Code");
+        bookManager.addBook("Effective Java");
+
+        userManager.addUser("Alice");
+        userManager.addUser("Bob");
+
+        System.out.println("Books: " + bookManager.listBooks());
+        System.out.println("Users: " + userManager.listUsers());
     }
 }
