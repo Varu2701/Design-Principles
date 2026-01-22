@@ -1,24 +1,42 @@
 package com.epam.campus;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
-public class BookManager {
-    private List<String> books = new ArrayList<>();
+/**
+ * Manages book-related operations in the library.
+ */
+public class BookManager implements IBookManager {
+    private final List<Book> books = new ArrayList<>();
 
-    public void addBook(String book) {
+    @Override
+    public void addBook(Book book) {
+        if (book == null)
+            throw new IllegalArgumentException("Book cannot be null");
+        if (books.contains(book))
+            throw new IllegalArgumentException("Book already exists: " + book);
         books.add(book);
     }
 
-    public void removeBook(String book) {
-        books.remove(book);
+    @Override
+    public void removeBook(Book book) {
+        if (book == null)
+            throw new IllegalArgumentException("Book cannot be null");
+        if (!books.remove(book))
+            throw new IllegalArgumentException("Book not found: " + book);
     }
 
-    public boolean hasBook(String book) {
+    @Override
+    public boolean hasBook(Book book) {
+        if (book == null)
+            return false;
         return books.contains(book);
     }
 
-    public List<String> listBooks() {
-        return new ArrayList<>(books);
+    @Override
+    public List<Book> listBooks() {
+        return Collections
+.unmodifiableList(books);
     }
 }
