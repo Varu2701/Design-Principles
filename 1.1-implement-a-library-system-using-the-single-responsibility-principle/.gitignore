@@ -3,7 +3,6 @@
 
 # But not these files...
 !.gitignore
-
-# Allow Java source files in src/main/java and src/test/java
-!src/main/java/**/*.java
-!src/test/java/**/*.java
+!src/
+!src/**/
+!src/**/*.java
